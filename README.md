@@ -1,65 +1,125 @@
-# Data Preprocessing Scripts
+Here’s a clearer and more polished version of your guide to the data preprocessing scripts:
 
-Here is the complete guide to the files for preprocessing
+---
 
-### Count
+## 📁 Data Preprocessing Scripts Guide
 
-This script can be used to count the total number of rows in the files in dataset.
+This document provides a complete overview of the preprocessing scripts and notebooks used in the dataset pipeline.
 
-### Hierarchy Viewer
+---
 
-This script can be used to view hierarchy or struture of the folders.
+### 🔧 Script Descriptions
 
-### Plot Sensor Data
+**1. `Count`**
+Counts the total number of rows in all files within the dataset.
 
-This script can be used to plot a single file's data.
+**2. `Hierarchy Viewer`**
+Displays the folder structure to help visualize the dataset’s hierarchy.
 
-### Plot Graphs with Dimension
+**3. `Plot Sensor Data`**
+Plots sensor data from a single file for inspection.
 
-Notebook to plot sensory data collectively.
+**4. `Plot Graphs with Dimension`**
+Notebook for collectively visualizing sensory data across multiple files or dimensions.
 
-### Convert to Atomic
+**5. `Convert to Atomic`**
+Converts 3-minute activity recordings into 5-second atomic events.
 
-This file can be used to convert 3 minutes activities to 5 seconds events.
+**6. `Delete Last Row`**
+Removes the last (potentially incomplete) row from each file.
 
-### Delete Last Row
+**7. `Final Fixed 4 Second`**
+Notebook that converts event files into JSON format, ready for machine learning model input.
 
-Script will delete last row from each file to eliminate last incomplete row.
+**8. `Structured Data Code`**
+Reorganizes folder hierarchy from collection format to a structure compatible with JSON conversion.
 
-### Final Fixed 4 second
+**9. `Sync`**
+Synchronizes sensor files based on aligned start and end times (late start, early finish).
 
-Notebook can be used to convert events files to json file which can be parsed to ML model for training and testing.
+**10. `Verify Data Timestamps`**
+Checks that sensor file timestamps align with expected event times *before* syncing and restructuring.
 
-### Structured Data Code
+**11. `Verify`**
+Verifies duration and value consistency *before* syncing and restructuring.
 
-Can be used to change the hierarchy of the folders from collection structure to required structure or hierarchy for conversion to json.
+**12. `Verify Timestamps Sync Data`**
+Verifies timestamps *after* syncing and restructuring.
 
-### Sync
+**13. `Verify Sync Data`**
+Verifies duration and values *after* syncing and restructuring.
 
-Sync script can be used to synchronized data of the files according to late start early finish.
+---
 
-### Verify Data Timestamps
+### 🧭 Recommended Script Execution Order
 
-Can be used to verify data timestamps to match events time before syncing and changing hierarchy.
+1. **Standardize Subject Names**
+2. **Standardize Activity Names**
+3. **Delete Last Row**
+4. **Structured Data Code**
+5. **Sync**
+6. **Convert to Atomic**
+7. **Final Fixed 4 Second (JSON Conversion)**
 
-### Verify
+> ⚠️ *Note:* The remaining scripts are primarily used for verification. Each script accepts a path to the base folder containing the three device folders.
 
-Can be used to verify duration and total values of collected data before syncing and changing hierarchy.
+---
 
-### Verify Timestamps Sync Data
+### 🏷️ Standard Activity Labels
 
-Can be used to verify data timestamps to match events time after syncing and changing hierarchy.
+* `bending`
+* `walking`
+* `standing_up_from_sitting`
+* `sitting_down_from_standing`
+* `slow_walk`
+* `squatting`
+* `open_door`
+* `close_door`
+* `quick_walk`
+* `sitting`
+* `put_on_floor`
+* `pick_from_floor`
+* `laying_down_from_sitting`
+* `standing_up_from_laying`
+* `typing`
+* `jogging`
+* `clean_the_table`
+* `open_bag`
+* `open_big_box`
+* `reading`
+* `close_lid_by_rotation`
+* `plugin`
+* `throw_out`
+* `laying`
+* `eat_small_things`
+* `talk_using_phone`
+* `standing`
+* `upstairs`
+* `downstairs`
+* `drink_water`
+* `fall_forward`
+* `fall_right`
+* `fall_backward`
+* `fall_left`
+* `fall_forward_when_trying_to_sit_down`
+* `fall_backward_while_trying_to_sit_down`
+* `fall_forward_while_trying_to_stand_up`
+* `fall_backward_while_trying_to_stand_up`
 
-### Verify Sync Data
+---
 
-Can be used to verify duration and total values of collected data after syncing and changing hierarchy.
+### ⏱️ Three-Minute Activities
 
-## Complete Sequence of running scripts for preprocessing
+* `quick_walk`
+* `jogging`
+* `laying`
+* `reading`
+* `sitting`
+* `slow_walk`
+* `standing`
+* `talk_using_phone`
+* `typing`
+* `walking`
+* `clean_the_table`
 
-    - Delete Last Row
-    - Structured Data Code
-    - sync
-    - convert to atomic
-    - final fixed 4 second atomic activity
 
-Note: Other files are just used for verification of data. Each file accept the path till base folder which have three devices folders.
